@@ -1,12 +1,28 @@
 version: '2'
 
 services:
+  mariadb:
+    image: docker.io/bitnami/mariadb:10.2
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_USER=user
+      - MARIADB_DATABASE=crawler
+      - MARIADB_PASSWORD=pass123
+    ports:
+      - 3306:3306
   myapp:
-    container_name: myapp
+    container_name: crawler_container
     tty: true
     image: docker.io/bitnami/laravel:8
+    environment:
+      - DB_HOST=mariadb
+      - DB_USERNAME=user
+      - DB_DATABASE=crawler
+      - DB_PASSWORD=pass123
+    depends_on:
+      - mariadb
     ports:
       - 3000:3000
     volumes:
       - ./:/app
-    
+    # privileged: true # Privileged mode could be required to run this container under Windows

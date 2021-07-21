@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', 'WebServiceController@send');
+//Route::get('test', [WSController::class, 'send']);
+Route::get('/test', 'App\Http\Controllers\WSController@index');
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
