@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 //Route::get('/', 'WebServiceController@send');
 //Route::get('test', [WSController::class, 'send']);
-Route::get('/test', 'App\Http\Controllers\WSController@index');
+Route::get('/index', 'App\Http\Controllers\WSController@index')->name('index'); ;
+Route::get('/home', 'App\Http\Controllers\WSController@home')->name('home'); ;
 
 // Route::get('/', function () {
 //     return view('welcome');

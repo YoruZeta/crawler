@@ -4,7 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>Laravel</title>
+      
+        <title>Crawler</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -23,18 +24,55 @@
     <body class="antialiased">
         <form action="/guardar" method="POST">
 
-            <div class="form-group row">
-                <label for="inputvehiculo" class="col-sm-8 col-form-label">URL</label>
-                <div class="col-sm-10">
-                <input type="text" class="form-control" id="url" placeholder="Auto o Camioneta">
-                </div>
+
+        <div class="container-fluid">
+        
+            <br>
+
+            <div class="form-group">
+                <b><label>SEARCH</label></b>
+                <input type="text" class="form-control" id="search" placeholder="Search..">
             </div>
             
-            <div class="form-group row">
-                <div class="col-sm-10">
-                <button type="submit" class="btn btn-success">Sign in</button>
-                </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-dark">Search</button>
             </div>
+
+            <table class="table table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Rank</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Points</th>
+                        <th scope="col">Comments</th>
+                        </tr>
+                </thead>
+                <tbody>
+                    @foreach($result as $key => $value)
+                        <tr>
+                            @isset($value['rank'])
+                                <th scope="row">{{ $value['rank'] }} </th>
+                            @endisset
+                            @isset($value['title'])
+                                <th>{{ $value['title'] }}</th>
+                            @endisset
+                            @isset($value['points'])
+                                <th>{{ $value['points'] }} </th>
+                            @endisset
+                            @isset($value['comments'])
+                                <th>{{ $value['comments'] }}</th>
+                            @endisset
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>  
+        </div>
         </form>
     </body>
 </html>
+
+
+<script>
+
+
+</script>
