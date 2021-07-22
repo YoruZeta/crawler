@@ -8,6 +8,13 @@ This is my version of a web crawler. I used guzzlehttp/guzzle for helpme to cons
 This program requires of docker-compose to run.
 If you need to install dockergo to [docker](https://www.docker.com/).
 
+The branch of the project is master:
+
+```bash
+git checkout master
+git pull origin master
+```
+
 When you have docker, only run:
 
 ```bash
