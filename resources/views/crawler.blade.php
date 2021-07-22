@@ -27,6 +27,7 @@
             <div class="container-fluid">
                 <br>
                 <div class="form-group">
+                <button type="submit" name="submitbutton" value="all" class="btn btn-dark">All</button>
                     <button type="submit" name="submitbutton" value="more" class="btn btn-dark">More than five words in the tittle order by amount of comments</button>
                     <button type="submit" name="submitbutton" value="less" class="btn btn-dark">Less than or equal to five words in the tittle order by points</button>
                 </div>

@@ -36,12 +36,14 @@ class WSController extends Controller
             case 'more':
                 $case = 'more';
                 break;
-
             case 'less':
                 $case = 'less';
                 break;
+            case 'all':
+                $case = 'all';
+                break;
         }
-        $result = self::order($case);
+        $result = ($case == 'all') ? self::get_path() : self::order($case);
         return view('crawler', ['result' => $result]);
 
     }
@@ -60,7 +62,13 @@ class WSController extends Controller
                 $less[$key] = $obj;
             }
         }
-        return $result = ($case == "more") ? $more : $less;
+
+        $result = ($case == "more") ? $more : $less;
+        $colum = ($case == "more") ? "comments" : "points";
+
+        $result = self::array_sort_by_column($result, $colum);
+
+        return $result;
 
     }
 
@@ -83,6 +91,7 @@ class WSController extends Controller
         }
 
         foreach ($points as $key => $point) {
+         
             $result[$key] = [
                 "points" => $points[$key]->textContent,
                 "rank" => $result[$key]["rank"],
@@ -91,17 +100,44 @@ class WSController extends Controller
         }
 
         foreach ($commments as $key => $commment) {
+         
             $result[$key] = [
                 "comments" => $commments[$key]->textContent,
                 "rank" => $result[$key]["rank"],
                 "title" => $result[$key]["title"],
                 "points" => $result[$key]["points"],
-
             ];
         }
 
-        return $result;
+        $resultpoints = self::clean_label($result, "points");
+        $resultpointscomments = self::clean_label($resultpoints, "comments");
+
+        return $resultpointscomments;
 
     }
 
+    public function clean_label($array, $colum) {
+
+        foreach($array as $key => $obj){
+            if(isset($obj[$colum])){
+                $points_format = explode(" ", (string)$obj[$colum]);
+                $array[$key][$colum] = $points_format[0];
+            }
+            else{
+                $array[$key][$colum] = 0;
+            }
+        }
+        return $array;
+ 
+    }
+
+    public function array_sort_by_column($myArray, $colum){
+        foreach ($myArray as $key => $row) {
+            $filter[$key] = $row[$colum];
+        }
+        array_multisort($filter, SORT_DESC, $myArray);
+        return $myArray;
+
+    }
+  
 }
