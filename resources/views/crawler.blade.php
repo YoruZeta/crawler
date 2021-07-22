@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-      
+
         <title>Crawler</title>
 
         <!-- Fonts -->
@@ -21,58 +21,47 @@
             }
         </style>
     </head>
-    <body class="antialiased">
-        <form action="/guardar" method="POST">
-
-
-        <div class="container-fluid">
-        
-            <br>
-
-            <div class="form-group">
-                <b><label>SEARCH</label></b>
-                <input type="text" class="form-control" id="search" placeholder="Search..">
-            </div>
-            
-            <div class="form-group">
-                <button type="submit" class="btn btn-dark">Search</button>
-            </div>
-
-            <table class="table table-striped table-dark">
-                <thead>
-                    <tr>
-                        <th scope="col">Rank</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Points</th>
-                        <th scope="col">Comments</th>
-                        </tr>
-                </thead>
-                <tbody>
-                    @foreach($result as $key => $value)
+    <body>
+        <form action="/search" method="POST">
+            @csrf
+            <div class="container-fluid">
+                <br>
+                <div class="form-group">
+                    <button type="submit" name="submitbutton" value="more" class="btn btn-dark">More than five words in the tittle order by amount of comments</button>
+                    <button type="submit" name="submitbutton" value="less" class="btn btn-dark">Less than or equal to five words in the tittle order by points</button>
+                </div>
+                <table class="table table-striped table-dark">
+                    <thead>
                         <tr>
-                            @isset($value['rank'])
-                                <th scope="row">{{ $value['rank'] }} </th>
-                            @endisset
-                            @isset($value['title'])
-                                <th>{{ $value['title'] }}</th>
-                            @endisset
-                            @isset($value['points'])
-                                <th>{{ $value['points'] }} </th>
-                            @endisset
-                            @isset($value['comments'])
-                                <th>{{ $value['comments'] }}</th>
-                            @endisset
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>  
-        </div>
+                            <th scope="col">Rank</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Points</th>
+                            <th scope="col">Comments</th>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($result as $key => $value)
+                            <tr>
+                                @isset($value['rank'])
+                                    <th scope="row">{{ $value['rank'] }} </th>
+                                @endisset
+                                @isset($value['title'])
+                                    <th>{{ $value['title'] }}</th>
+                                @endisset
+                                @isset($value['points'])
+                                    <th>{{ $value['points'] }} </th>
+                                @endisset
+                                @isset($value['comments'])
+                                    <th>{{ $value['comments'] }}</th>
+                                @endisset
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </form>
     </body>
 </html>
 
-
 <script>
-
-
 </script>

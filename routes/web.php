@@ -11,15 +11,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
-//Route::get('/', 'WebServiceController@send');
-//Route::get('test', [WSController::class, 'send']);
-Route::get('/index', 'App\Http\Controllers\WSController@index')->name('index'); ;
-Route::get('/home', 'App\Http\Controllers\WSController@home')->name('home'); ;
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-
+Route::get('/index', 'App\Http\Controllers\WSController@index')->name('index');
+Route::post('/search', 'App\Http\Controllers\WSController@search')->name('search');
