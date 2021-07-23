@@ -16,7 +16,7 @@ git pull origin master
 Please copy ".env.example" and name the new file like ".env"
 
 This program requires of docker-compose to run.
-If you need to install dockergo to [docker](https://www.docker.com/).
+If you need to install docker go to [docker](https://www.docker.com/).
 
 When you have docker, only run in to your project directory:
 
