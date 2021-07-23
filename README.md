@@ -14,12 +14,19 @@ The branch of the project is master:
 git checkout master
 git pull origin master
 ```
+Please change ".env.example" to ".env"
 
 When you have docker, only run:
 
 ```bash
 docker-compose up --build
 ```
+
+```bash
+docker exec -it crawler_container php artisan key:generate
+```
+
+
 This will create for the fist time, the next time you need to up the program use:
 ```bash
 docker-compose up
@@ -27,6 +34,14 @@ docker-compose up
 When you finish this you see the program in:
 
 [http://localhost:3000/index](http://localhost:3000/index)
+
+## Example
+ALL
+![ALL](ALL.png)
+MORE
+![MORE](MORE.png)
+LESS
+![LESS](LESS.png)
 
 ## Autor
 
