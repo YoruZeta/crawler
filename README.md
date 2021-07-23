@@ -5,31 +5,23 @@ This is my version of a web crawler. I used guzzlehttp/guzzle for helpme to cons
 
 ## Installation
 
-First, for copy the repo:
+First, copy the repo and change to branch master:
 
 ```bash
 git clone https://github.com/YoruZeta/crawler.git
-```
-
-Please copy ".env.example" and name the new file like ".env"
-
-The branch of the project is master:
-
-```bash
 git checkout master
 git pull origin master
 ```
 
+Please copy ".env.example" and name the new file like ".env"
+
 This program requires of docker-compose to run.
 If you need to install dockergo to [docker](https://www.docker.com/).
 
-When you have docker, only run:
+When you have docker, only run in to your project directory:
 
 ```bash
 docker-compose up --build
-```
-
-```bash
 docker exec -it crawler_container php artisan key:generate
 ```
 
