@@ -11,7 +11,7 @@ First, for copy the repo:
 git clone https://github.com/YoruZeta/crawler.git
 ```
 
-Please change ".env.example" to ".env"
+Please copy ".env.example" and name the new file like ".env"
 
 The branch of the project is master:
 
