@@ -5,8 +5,13 @@ This is my version of a web crawler. I used guzzlehttp/guzzle for helpme to cons
 
 ## Installation
 
-This program requires of docker-compose to run.
-If you need to install dockergo to [docker](https://www.docker.com/).
+First, for copy the repo:
+
+```bash
+git clone https://github.com/YoruZeta/crawler.git
+```
+
+Please change ".env.example" to ".env"
 
 The branch of the project is master:
 
@@ -14,7 +19,9 @@ The branch of the project is master:
 git checkout master
 git pull origin master
 ```
-Please change ".env.example" to ".env"
+
+This program requires of docker-compose to run.
+If you need to install dockergo to [docker](https://www.docker.com/).
 
 When you have docker, only run:
 
@@ -25,7 +32,6 @@ docker-compose up --build
 ```bash
 docker exec -it crawler_container php artisan key:generate
 ```
-
 
 This will create for the fist time, the next time you need to up the program use:
 ```bash
